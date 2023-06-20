@@ -1,42 +1,42 @@
 #include <stdio.h>
 
-int rysuj_pros(int n);
-int rysuj_row(int n);
+int draw_rect_triangle(int n);  // Function to draw a rectangle triangle
+int draw_equilateral_triangle(int n);  // Function to draw an equilateral triangle
 
 int main(void)
 {
-    int n, typ;
+    int n, type;
 
-    printf("Jaki typ trojkata chcesz narysowac (1 - prostokatny, 2 - rownoboczny): ");
-    scanf("%d", &typ);
+    printf("Which type of triangle would you like to draw? (1 - rectangular triangle, 2 - equilateral triangle): ");
+    scanf("%d", &type);
 
-    printf("Podaj wysokosc trojkata: ");
+    printf("Enter the height of the triangle: ");
     scanf("%d", &n);
 
-    switch (typ)
+    switch (type)
     {
     case 1:
     {
-        rysuj_pros(n);
+        draw_rect_triangle(n);
         break;
     }
     case 2:
     {
-        rysuj_row(n);
+        draw_equilateral_triangle(n);
         break;
     }
     default:
-        printf("\n????????????\n");
+        printf("\nInvalid option\n");
     }
     return 0;
 }
 
-int rysuj_pros(int n)
+int draw_rect_triangle(int n)
 {
-    int w, k;
-    for (w = 1; w <= n; w++)
+    int row, col;
+    for (row = 1; row <= n; row++)
     {
-        for (k = 1; k <= w; k++)
+        for (col = 1; col <= row; col++)
         {
             printf("*");
         }
@@ -45,16 +45,16 @@ int rysuj_pros(int n)
     return 0;
 }
 
-int rysuj_row(int n)
+int draw_equilateral_triangle(int n)
 {
-    int w, s, k;
-    for (w = 0; w <= n; w++)
+    int row, space, col;
+    for (row = 0; row <= n; row++)
     {
-        for (s = n; s > w; s--)
+        for (space = n; space > row; space--)
         {
             printf(" ");
         }
-        for (k = 1; k <= (2 * w - 1); k++)
+        for (col = 1; col <= (2 * row - 1); col++)
         {
             printf("*");
         }
